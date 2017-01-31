@@ -1,0 +1,31 @@
+#------------------------------------------------
+#RUN SERVER
+#------------------------------------------------
+
+Go : cstar/myapp/
+Do : python manage.py runserver
+Do : http://127.0.0.1:8000/cstar/ 
+
+
+
+#------------------------------------------------
+#ADD PAGE HTML
+#------------------------------------------------
+
+Create html page at cstar/myapp/myapp/templates/cstar/file.html
+
+
+
+Modify cstar/myapp/cstar/urls.py 
+ADD "url('^FILE.html$', views.FILE, name='FILE')," IN this file.
+
+
+
+Modify cstar/myapp/cstar/views.py
+ADD "def FILE(request):
+    	return render(request, 'cstar/FILE.html', {})" IN this file.
+
+
+
+RUN SERVER AND CLICK on the next link : http://127.0.0.1:8000/cstar/FILE.html
+

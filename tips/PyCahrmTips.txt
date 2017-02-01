@@ -1,0 +1,6 @@
+Alt + F12    : start terminal (unix/windows depending on host OS)
+Ctrl + Tab   : switch window inside PyCharm
+Double shift : search everywhere
+ctrl + space : invoke code completion
+
+

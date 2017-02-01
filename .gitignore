@@ -12,7 +12,7 @@
 hs_err_pid*
 
 # PyCharm Files
-../.idea/**
+.idea/**
 
 # Compilation files
 **/*.pyc

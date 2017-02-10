@@ -1,27 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-   
-
-    <title>CSTAR APP</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">    
-  </head>
-
-  <body>
-  
-  
-    
-
-      <h1>ADD LOGS</h1>
-      
-     
-  
-
-  </body>
-</html>
+{% extends "global/header.html" %}
+{% block content %}
+    <h1>LOGS HTML</h1>
+    <p>Submit your logs here
+    </p>
+{% include "global/includes/htmlsnippet.html" %}
+<button type="submit" class="btn btn-default">Submit</button>
+{% endblock %}

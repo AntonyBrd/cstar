@@ -1,4 +1,12 @@
 {% block content %}
 <p>Hi I am included <B>BITCH</B>
     </p>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<form action="logs.html" method="post">
+{% csrf_token %}
+    <input type="text" name="info_name" value="info_value" />
+    <input type="submit" value="Submit" />
+</form>
+<p> Post Data: {{ info }} </p>
+<p> Result: {{ output }} </p>
 {% endblock %}

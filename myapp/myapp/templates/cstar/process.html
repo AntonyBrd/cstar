@@ -1,1 +1,8 @@
-<h1>PROCESS HTML</h1>
+{% extends "global/header.html" %}
+{% block content %}
+    <h1>PROCESS HTML</h1>
+    <p>Hey! We are now in the process html page.
+        We are using Jinja template to use same header.
+    </p>
+{% include "global/includes/htmlsnippet.html" %}
+{% endblock %}

@@ -1,0 +1,26 @@
+# Delete last commit
+git reset --hard HEAD~
+
+# Rebase interactif pour ne prendre que les commits utiles
+git rebase -i <branch name>
+
+# Swanny git config
+
+[core]
+	autocrlf = false
+	excludesfile = G:/.gitignore_global
+
+[alias]
+	co = checkout
+	st = status
+	rb = rebase
+        rbi = rebase -i
+        rba = rebase --abort
+        rbc = rebase --continue
+	cp = cherry-pick
+	br = branch
+	pr = pull --rebase
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[user]
+	name = Swanny Lorenzi
+	email = t922047@airfrance.fr

@@ -1,11 +1,13 @@
 from django.shortcuts import render
 from django.contrib.staticfiles.storage import staticfiles_storage
 import json
+import os
 from django.contrib.staticfiles.templatetags.staticfiles import static
 #from cstar.processing_anomalies.simple_script import myFunc
 
 
 def my_func(small_input):
+    print(os.getcwd())
     data_sample = open('static/data/sample.json', 'r')
     var = json.load(data_sample)
     res = var.get("x")

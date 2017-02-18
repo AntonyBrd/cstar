@@ -15,21 +15,21 @@ Cyber Security Tracking, Analysis &amp; Reporting
 
 cstar/ <br>
 ├── detectr/          <-- WEB SITE DIRECTORY <br>
-│   ├── admin/                   <- web site administration
-│   ├── cstar/                   <- web site global conf & code
-│   ├── detectr/                 <- web app configurations & code
-│   ├── processing_anomalies/    <- python back end module
-│   ├── static/                  <- website static files
-│   ├── db.sqlite3
-│   ├── Dockerfile               <- Web site application image
-│   ├── requirements.txt
-│   └── manage.py                <- main python script for django app
-├── postgres/         <-- DATABASE DIRECTORY
-│   ├── scripts/
-│   ├── data2.sql
-│   └── data3.inf
-├── tips
-│   └── devtips.txt
-├── .gitignore
-└── README.md.txt
+│   ├── admin/                   <- web site administration<br>
+│   ├── cstar/                   <- web site global conf & code<br>
+│   ├── detectr/                 <- web app configurations & code<br>
+│   ├── processing_anomalies/    <- python back end module<br>
+│   ├── static/                  <- website static files<br>
+│   ├── db.sqlite3<br>
+│   ├── Dockerfile               <- Web site application image<br>
+│   ├── requirements.txt<br>
+│   └── manage.py                <- main python script for django app<br>
+├── postgres/         <-- DATABASE DIRECTORY<br>
+│   ├── scripts/<br>
+│   ├── data2.sql<br>
+│   └── data3.inf<br>
+├── tips<br>
+│   └── devtips.txt<br>
+├── .gitignore<br>
+└── README.md.txt<br>
 

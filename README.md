@@ -13,8 +13,8 @@ Cyber Security Tracking, Analysis &amp; Reporting
 
 
 
-cstar/
-├── detectr/          <-- WEB SITE DIRECTORY
+cstar/ <br>
+├── detectr/          <-- WEB SITE DIRECTORY <br>
 │   ├── admin/                   <- web site administration
 │   ├── cstar/                   <- web site global conf & code
 │   ├── detectr/                 <- web app configurations & code

@@ -12,14 +12,16 @@ ENV DOCKYARD_SRVPROJ=/srv/${DOCKYARD_SRC}
 
 RUN mkdir -p $DOCKYARD_SRVPROJ
 WORKDIR $DOCKYARD_SRVPROJ
-RUN echo "will do ls then pwd"
-RUN echo `ls ; pwd`
+
 VOLUME .:$DOCKYARD_SRVPROJ
 ADD . $DOCKYARD_SRVPROJ
-RUN echo "will do ls then pwd"
-RUN echo `ls ; pwd`
+
 RUN pip install -r requirements.txt
 
+
+#CMD ["python", "manage.py", "runserver", "0.0.0.0:8081"]
+RUN python manage.py migrate
 EXPOSE 8081
+RUN python manage.py runserver 0.0.0.0:8081
 
-
+EXPOSE 70

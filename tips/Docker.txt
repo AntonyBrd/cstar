@@ -1,0 +1,66 @@
+Installation de docker-compose
+https://github.com/docker/compose/releases
+https://docs.docker.com/compose/install/
+
+
+--------------------------------
+docker-compose.yml
+--------------------------------
+version: '2.0'
+
+services:
+   db:
+     image: "postgres:9.4"
+     container_name: "db"
+     volumes:
+       - "data:/var/lib/postgresql/data"
+   cstar:
+     build: detectr
+     ports:
+       - "8081:8081"
+
+volumes:
+   data:
+
+---------------------
+
+version: '2.0'
+
+services:
+   detectr:
+     build: "./detectr"
+     command: "python manage.py runserver 0.0.0.0:8081"
+     ports:
+       - "8081:8081"
+       - "70:70"
+
+volumes:
+   data:
+
+
+------------------
+version: '2.0'
+
+services:
+   db:
+     image: "postgres:9.6"
+     container_name: "db"
+     volumes:
+       - "data:/var/lib/postgresql/data"
+     networks:
+       - back-tier
+   detectr:
+     build: "./detectr"
+     command: "python manage.py runserver 8081"
+     ports:
+       - "8081:8081"
+     networks:
+       - back-tier
+
+volumes:
+   data:
+
+networks:
+  back-tier:
+
+

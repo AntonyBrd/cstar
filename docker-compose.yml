@@ -1,0 +1,11 @@
+version: '2.0'
+
+services:
+   detectr:
+     build: "./detectr"
+     ports:
+       - "8081:8081"
+       - "70:70"
+
+volumes:
+   data:

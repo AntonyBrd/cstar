@@ -41,3 +41,6 @@ def process(request):
 
 def profils(request):
     return render(request, 'cstar/profils.html', {})
+
+def upload(request):
+    return render(request, 'cstar/profils.html', {})

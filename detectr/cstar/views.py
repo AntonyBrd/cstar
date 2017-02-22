@@ -43,4 +43,10 @@ def profils(request):
     return render(request, 'cstar/profils.html', {})
 
 def upload(request):
-    return render(request, 'cstar/profils.html', {})
+    return render(request, 'cstar/upload.html', {})
+
+def configure(request):
+    return render(request, 'cstar/configure.html', {})
+
+def detect(request):
+    return render(request, 'cstar/detect.html', {})

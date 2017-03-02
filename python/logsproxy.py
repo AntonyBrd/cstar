@@ -20,7 +20,7 @@ import matplotlib.pyplot as plt
 
 # ------------------------------ Parameters --------------------------------- #
 
-DIR_DATA = "D:/Users/lmellior/Desktop/Sogeti/ESEC/code/output log 50go/"
+DIR_DATA = "C:/Users/oziyati/Utilisateur/Rendu/data_detectr/"
 DBSCAN_EPS = 9
 DBSCAN_MINPTS = 15
 KMEANS_N_CLUSTERS = 7
@@ -65,6 +65,63 @@ def normalization(df,scaling):
     return df
 
 
+from bokeh.plotting import figure, output_notebook, show
+
+
+'''
+def biplotb(data, pc1, pc2):
+    pca = decomposition.PCA()
+    pca.fit(data)
+
+    axe1 = pc1 - 1
+    axe2 = pc2 - 1
+    xvector = pca.components_[axe1]  # see 'prcomp(my_data)$rotation' in R
+    yvector = pca.components_[axe2]
+    xs = pca.transform(data)[:, axe1]  # see 'prcomp(my_data)$x' in R
+    ys = pca.transform(data)[:, axe2]
+
+    #Create figure
+    p = bokeh.plotting.figure(background_fill='#DFDFE5', plot_width=650,
+                              plot_height=450)
+    p.xgrid.grid_line_color = 'white'
+    p.ygrid.grid_line_color = 'white'
+    p.xaxis.axis_label = 'PC 1'
+    p.yaxis.axis_label = 'PC 2'
+
+    # Define colors in a dictionary to access them with
+    # the key from the pandas groupby funciton.
+    keys = df_snp_pca.super_pop.dropna().unique()
+    color_dict = {k: bebi103.rgb_frac_to_hex(sns.color_palette()[i])
+                  for i, k in enumerate(sorted(keys))}
+    ''''''
+    for i in range(len(xvector)):
+        plt.arrow(0, 0, xvector[i] * max(xs), yvector[i] * max(ys),
+                  color='r', width=0.0005, head_width=0.0025)
+        plt.text(xvector[i] * max(xs) * 1.2, yvector[i] * max(ys) * 1.2,
+                 list(data.columns.values)[i], color='g', ha='center', va='center')
+
+    for i in range(len(xs)):
+        plt.plot(xs[i], ys[i], 'bo', alpha=0.2)
+
+    plt.show()
+    ''''''
+    for key, group in df_snp_pca.groupby('super_pop'):
+        # Specify data source
+        source = bokeh.models.ColumnDataSource(group)
+
+        # Populate glyphs
+        if key == 'Perfect Human':
+            p.diamond_cross(x='PC1', y='PC2', size=20, source=source,
+                            color='black', fill_color=None, line_width=2,
+                            legend=key)
+        else:
+            p.circle(x='PC1', y='PC2', size=7, alpha=0.2, source=source,
+                     color=color_dict[key], legend=key)
+
+    p.legend.background_fill_alpha = 0.25
+    p.legend.background_fill_color = 'blanchedalmond'
+    bokeh.io.show(p)
+'''
 def biplot(data,pc1,pc2):
 
     pca = decomposition.PCA() 
@@ -149,8 +206,50 @@ Bigdata = pd.concat([df_1_clean,center_cluster], axis=0)
 pca = decomposition.PCA()
 pca.fit(Bigdata)
 X = pca.transform(Bigdata)
-plt.scatter(X[:,0], X[:,1])
+#plt.scatter(X[:,0], X[:,1])
 
+#p = bokeh.plotting.figure(background_fill='#DFDFE5', plot_width=650,                              plot_height=450)
+
+from bokeh.plotting import figure, output_notebook, show
+from bokeh.models import HoverTool, BoxSelectTool #For enabling tools
+
+#Add tools
+#TOOLS = [BoxSelectTool(), HoverTool()]
+#hover=HoverTool(tooltips=TOOLS)
+'''tooltips=[
+    ('Cylinders', '@cyl'),
+    ('Displacement', '@displ'),
+    ('Weight', '@weight'),
+    ('Acceleration', '@accel')
+]'''
+p = figure(background_fill='#DFDFE5', plot_width=650,
+                          plot_height=450) #, tools=TOOLS)
+#p.add_tools(TOOLS)
+#p=figure(plot_width=400,plot_height=400,tools=TOOLS)
+p.circle(X[:,0],X[:,1],color="navy", alpha=0.5)
+
+#Visual Elements
+p.xgrid.grid_line_color = 'white'
+p.ygrid.grid_line_color = 'white'
+p.xaxis.axis_label ='PC 1'
+p.yaxis.axis_label ='PC 2'
+
+print(p.html.)
+#show(p)
+'''
+from bokeh.charts import Scatter, output_file, show
+from bokeh.models import HoverTool, BoxSelectTool #For enabling tools
+
+tooltips=[BoxSelectTool(), HoverTool()]
+
+q = Scatter(X[:,0],X[:,1], title="ACP",
+            xlabel="Miles Per Gallon", ylabel="Horsepower")
+
+output_file("scatter.html")
+
+show(q)
+'''
+'''
 # Coordonate of cluster centers in PCA
 comp = pd.DataFrame(pca.components_.T, index=Bigdata.columns)
 comp_cluster = pd.DataFrame(X[-KMEANS_N_CLUSTERS:], index=center_cluster.index)
@@ -182,4 +281,4 @@ ystart = np.dot(pca.components_[1],jump1.T)
 yend = np.dot(pca.components_[1],jump2.T)
 
 
-
+'''
